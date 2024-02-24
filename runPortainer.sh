@@ -1,10 +1,11 @@
-
 docker volume create portainer_data
 docker stop portainer
 docker rm portainer
 docker run -d \
   --name portainer \
   --restart=always \
+  --network enp2s0 \
+  --ip 192.168.178.4 \
   -v /var/run/docker.sock:/var/run/docker.sock \
   -v portainer_data:/data \
   -p 8000:8000 \
